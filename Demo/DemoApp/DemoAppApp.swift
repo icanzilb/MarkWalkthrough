@@ -14,7 +14,6 @@ struct DemoAppApp: App {
                 NSSound(named: "Morse")!.play()
             })
             .background(Color("BackgroundColor"))
-            .navigationTitle("Rex Tables Walkthrough")
             .frame(width: 650, height: 500, alignment: .top)
         }
         .windowResizability(.contentSize)
