@@ -21,8 +21,7 @@ public struct MarkWalkthroughWindow: View {
                     if viewModel.currentStep.isMultiple(of: 2) {
                         if let name = viewModel.evenImageName {
                             Image(name)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .walkthroughStyle(.screenshot)
                                 .transition(
                                     .asymmetric(
                                         insertion: viewModel.evenAddTransition,
@@ -34,8 +33,7 @@ public struct MarkWalkthroughWindow: View {
                     } else {
                         if let name = viewModel.oddImageName {
                             Image(name)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .walkthroughStyle(.screenshot)
                                 .transition(
                                     .asymmetric(
                                         insertion: viewModel.oddAddTransition,
@@ -48,8 +46,7 @@ public struct MarkWalkthroughWindow: View {
 
                     if let name = viewModel.stickerImageName {
                         Image(name)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                            .walkthroughStyle(.none)
                             .frame(width: 500)
                             .scaleEffect(viewModel.stickerScale, anchor: .center)
                             .offset(x: viewModel.stickerOffset[0], y: viewModel.stickerOffset[1])
