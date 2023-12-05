@@ -1,7 +1,42 @@
 import SwiftUI
 
-enum WalkthroughImageStyle {
+public enum WalkthroughImageStyleEnvironmentKey: EnvironmentKey {
+    public static var defaultValue: WalkthroughImageStyle = .none
+}
+
+extension EnvironmentValues {
+    public var walkthroughImageStyle: WalkthroughImageStyle {
+        get { self[WalkthroughImageStyleEnvironmentKey.self] }
+        set { self[WalkthroughImageStyleEnvironmentKey.self] = newValue }
+    }
+}
+
+extension View {
+    /// Sets the ``WalkthroughImageStyle`` in the environment to `newStyle`.
+    @inlinable
+    @ViewBuilder
+    public func walkthroughImageStyle(_ newStyle: WalkthroughImageStyle) -> some View {
+        environment(\.walkthroughImageStyle, newStyle)
+    }
+}
+
+extension Scene {
+    /// Sets the ``WalkthroughImageStyle`` in the environment to `newStyle`.
+    @inlinable
+    @SceneBuilder
+    public func walkthroughImageStyle(_ newStyle: WalkthroughImageStyle) -> some Scene {
+        self.environment(\.walkthroughImageStyle, newStyle)
+    }
+}
+
+
+// MARK: -
+
+public enum WalkthroughImageStyle {
+    /// Shows the image to fit the window without any decoration.
     case none
+
+    /// Shows the image to fit the window with a drop shadow, ideal for app screenshots.
     case screenshot
 }
 

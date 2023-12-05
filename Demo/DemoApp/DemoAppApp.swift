@@ -15,6 +15,7 @@ struct DemoAppApp: App {
             })
             .background(Color("BackgroundColor"))
             .frame(width: 650, height: 500, alignment: .top)
+            .walkthroughImageStyle(.screenshot)
         }
         .windowResizability(.contentSize)
         .windowStyle(.hiddenTitleBar)
