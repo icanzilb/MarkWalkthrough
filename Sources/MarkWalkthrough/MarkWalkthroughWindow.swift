@@ -8,6 +8,8 @@ public struct MarkWalkthroughWindow: View {
     @ObservedObject var viewModel: MarkWalkthroughModel
     @State var controlsDisabled = false
 
+    @Environment(\.walkthroughImageStyle) var walkthroughImageStyle
+
     public init(viewModel: MarkWalkthroughModel, closeAction: @escaping () -> Void) {
         self.viewModel = viewModel
         self.closeAction = closeAction
@@ -21,8 +23,7 @@ public struct MarkWalkthroughWindow: View {
                     if viewModel.currentStep.isMultiple(of: 2) {
                         if let name = viewModel.evenImageName {
                             Image(name)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .walkthroughStyle(walkthroughImageStyle)
                                 .transition(
                                     .asymmetric(
                                         insertion: viewModel.evenAddTransition,
@@ -34,8 +35,7 @@ public struct MarkWalkthroughWindow: View {
                     } else {
                         if let name = viewModel.oddImageName {
                             Image(name)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+                                .walkthroughStyle(walkthroughImageStyle)
                                 .transition(
                                     .asymmetric(
                                         insertion: viewModel.oddAddTransition,
